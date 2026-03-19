@@ -31,7 +31,7 @@ weather-data-analyzer/
 │       └── java/
 │           └── com/weather/                             # Unit tests for the controller and service
 ├── target/                                              
-├── pom.xml                                              # All my Maven dependencies
+├── pom.xml                                              # Maven dependencies
 └── README.md                                            # This file right here
 ```
 
