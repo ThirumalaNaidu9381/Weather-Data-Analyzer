@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Data Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Weather Data Analyzer</h1>
+            <p>Track and analyze temperature data in real-time</p>
+        </header>
+
+        <main>
+            <section class="weather-section card">
+                <h2>Real-Time Weather</h2>
+                <div class="input-group">
+                    <input type="text" id="city-input" placeholder="Enter city name (e.g. London)" list="city-suggestions" required autocomplete="off">
+                    <datalist id="city-suggestions"></datalist>
+                    <button id="btn-weather" class="btn btn-primary">Get Weather</button>
+                </div>
+                <div id="weather-result" style="display: none; margin-top: 1rem; padding: 1rem; background: rgba(0,0,0,0.05); border-radius: 8px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <h3 id="weather-city" style="margin: 0; color: var(--primary-color);">City</h3>
+                            <p id="weather-desc" style="margin: 0.5rem 0 0; color: #666;">Condition</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <div id="weather-temp" style="font-size: 1.5rem; font-weight: bold; color: var(--secondary-color);">-- °C</div>
+                            <div id="weather-wind" style="font-size: 0.9rem; color: #666;">Wind: -- km/h</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="weather-error" class="message error" style="display: none;"></div>
+            </section>
+
+            <section class="input-section card">
+                <h2>Add New Temperature</h2>
+                <form id="temperature-form">
+                    <div class="input-group">
+                        <input type="number" id="temperature-input" step="0.1" placeholder="Enter temperature (°C)" required>
+                        <button type="submit" class="btn btn-primary">Add Data</button>
+                    </div>
+                </form>
+                <div id="add-message" class="message"></div>
+            </section>
+
+            <section class="stats-section">
+                <div class="stat-card card">
+                    <h3>Average Temperature</h3>
+                    <div class="stat-value" id="avg-temp">-- °C</div>
+                    <button id="btn-avg" class="btn btn-secondary">Calculate Average</button>
+                </div>
+
+                <div class="stat-card card">
+                    <h3>Highest Temperature</h3>
+                    <div class="stat-value" id="high-temp">-- °C</div>
+                    <button id="btn-high" class="btn btn-secondary">Get Highest</button>
+                </div>
+
+                <div class="stat-card card">
+                    <h3>Lowest Temperature</h3>
+                    <div class="stat-value" id="low-temp">-- °C</div>
+                    <button id="btn-low" class="btn btn-secondary">Get Lowest</button>
+                </div>
+            </section>
+
+            <section class="charts-section">
+                <div class="chart-card card">
+                    <h2>Day Graph (Today)</h2>
+                    <div class="chart-container">
+                        <canvas id="dayChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card card">
+                    <h2>Month Graph (This Month)</h2>
+                    <div class="chart-container">
+                        <canvas id="monthChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <section class="list-section card">
+                <div class="list-header">
+                    <h2>Recorded Temperatures</h2>
+                    <button id="btn-refresh" class="btn btn-outline">Refresh List</button>
+                </div>
+                <div class="table-container">
+                    <table id="temperature-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Temperature (°C)</th>
+                                <th>Timestamp</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="temperature-list">
+                            <!-- Data will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
