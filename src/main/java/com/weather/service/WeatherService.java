@@ -100,12 +100,16 @@ public class WeatherService {
             JsonNode hourly = weatherNode.get("hourly");
             JsonNode timeArray = hourly.get("time");
             JsonNode tempArray = hourly.get("temperature_2m");
-            String todayPrefix = currentWeather.get("time").asText().substring(0, 10);
+            String currentTimeStr = currentWeather.get("time").asText();
+            String todayPrefix = currentTimeStr.substring(0, 10);
             for (int i = 0; i < timeArray.size(); i++) {
                 String timeStr = timeArray.get(i).asText();
                 if (timeStr.startsWith(todayPrefix)) {
-                    hourlyTimes.add(timeStr.substring(11));
-                    hourlyTemps.add(tempArray.get(i).asDouble());
+                    // Only include up to the current hour
+                    if (timeStr.compareTo(currentTimeStr) <= 0) {
+                        hourlyTimes.add(timeStr.substring(11));
+                        hourlyTemps.add(tempArray.get(i).asDouble());
+                    }
                 }
             }
         }
