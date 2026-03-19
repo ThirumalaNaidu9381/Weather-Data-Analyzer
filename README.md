@@ -3,6 +3,7 @@
 A web application I built for easily checking the current weather of any city and analyzing daily temperature trends using line graphs. The backend is powered by Spring Boot, and the frontend uses plain vanilla JavaScript and HTML.
 
 ## Project Structure
+```text
 weather-data-analyzer/
 ├── src/
 │   ├── main/
@@ -32,6 +33,7 @@ weather-data-analyzer/
 ├── target/                                              
 ├── pom.xml                                              # All my Maven dependencies
 └── README.md                                            # This file right here
+```
 
 ## Backend
 I built the backend with Spring Boot 3.x using Java 17.
