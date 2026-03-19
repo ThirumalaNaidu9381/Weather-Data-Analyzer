@@ -12,6 +12,7 @@ public class AnalyzerApplication {
         SpringApplication.run(AnalyzerApplication.class, args);
     }
 
+    // Bean for making external API calls (e.g., to Open-Meteo)
     @Bean
     public RestTemplate restTemplate() {
         return new RestTemplate();

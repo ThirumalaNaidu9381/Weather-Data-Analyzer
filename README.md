@@ -13,10 +13,10 @@ weather-data-analyzer/
 │   │   │       ├── controller/
 │   │   │       │   └── WeatherController.java           # Where all the API endpoints live
 │   │   │       ├── exception/
-│   │   │       │   ├── CityNotFoundException.java       
+│   │   │       │   ├── CityNotFoundException.java       # Custom exception for missing cities
 │   │   │       │   └── GlobalExceptionHandler.java      # Catches bad requests or API errors
 │   │   │       ├── model/
-│   │   │       │   ├── Temperature.java                 
+│   │   │       │   ├── Temperature.java                 # Model representing a temperature reading
 │   │   │       │   └── WeatherResponse.java             # Holds the parsed weather data
 │   │   │       └── service/
 │   │   │           └── WeatherService.java              # The business logic (calls Open-Meteo API)
