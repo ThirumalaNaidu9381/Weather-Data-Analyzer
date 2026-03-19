@@ -1,122 +1,76 @@
 # Weather Data Analyzer
 
-📌 **Project Overview**
-Weather Data Analyzer is a web-based application developed using Spring Boot that helps you track and visualize real-time temperature data. The system allows you to search for any global city to see its current weather, and manually log local temperatures to monitor trends over time.
+## Project Overview
+Weather Data Analyzer is a simple web-based application built with Spring Boot and vanilla JavaScript. It helps users search for real-time weather data for any city and visualize temperature trends using line graphs. 
 
-The application connects to the Open-Meteo API to fetch accurate weather forecasts and uses Chart.js to display dynamic, interactive line graphs on the frontend.
+I built this project to learn how to integrate an external API (Open-Meteo) with a Java backend and how to connect it to a frontend using REST APIs and Chart.js.
 
 This project is useful for:
-- Tracking live weather and temperature for any city
-- Managing and logging manual temperature readings
-- Visualizing hourly and daily temperature trends
-- Learning how to integrate external APIs with a Spring Boot backend
+- Checking current weather conditions of any city in the world
+- Seeing day and month temperature graphs
+- Managing custom temperature inputs to see how they affect the average, max, and min temperatures.
 
-🚀 **Features**
-- Fetch real-time weather details and forecasts
-- Manage and log custom temperature readings
-- Connect to Open-Meteo Geocoding & Forecast APIs
-- Dynamic charts updating in real-time
-- Static frontend resources (HTML, CSS, JS)
+## Features
+- Search a city and get real-time weather data
+- View hourly and daily temperature trends on a graph
+- Add your own custom temperatures manually
+- View average, highest, and lowest temperatures from the recorded data
+- Delete manually added temperature records
+- Connects to the Open-Meteo API for real data
 
-🛠️ **Tech Stack**
-**Backend**
-- Java – Version 17
-- Spring Boot – Version 3.2.3
-- Spring Boot Web Starter
-- Maven – Dependency Management
-- REST API Integration (Spring RestTemplate)
+## Tech Stack
+**Backend:**
+- Java 17
+- Spring Boot 3.2.3
+- Spring Web
+- Maven
 
-**Frontend (Static Resources)**
+**Frontend:**
 - HTML5
 - CSS3
 - Vanilla JavaScript
-- Chart.js (Data Visualization)
+- Chart.js
 
-📂 **Project Structure**
-*You can add a project directory screenshot here.*
+## Project Workflow
+1. **Application Start**: The project starts from `AnalyzerApplication.java`. It spins up an embedded Tomcat server on port 8080.
+2. **API Connection**: The `WeatherService.java` class handles fetching data from the Open-Meteo API using `RestTemplate`.
+3. **Controllers**: The `WeatherController.java` is responsible for handling frontend requests (like getting weather info, adding temperatures, and deleting temperatures).
+4. **Data Models**: Simple Java classes like `Student` or `Temperature` hold the data coming in and out.
+5. **Frontend**: The `script.js` handles the search box, updating the UI, and rendering the Chart.js graphs dynamically when data is fetched.
 
-🔄 **Project Workflow**
-The application follows a simple Spring Boot architecture flow:
+## Prerequisites
+Before you run this project, make sure you have:
+- Java JDK 17 installed
+- Maven installed
+- An IDE like IntelliJ, Eclipse, or VS Code
+- Internet connection (so the weather API works)
 
-**1️⃣ Application Start**
-The project starts from:
-`AnalyzerApplication.java`
-Spring Boot initializes the application and starts the Tomcat embedded server on port 8080.
+## Database Setup
+Currently, this project uses an in-memory Java `ArrayList` to store the manually inputted temperatures, so **you don't need to install MySQL** or set up any database to run it. Just run the app and it works out of the box!
 
-**2️⃣ External API Integration**
-`WeatherService.java` handles outbound requests to the Open-Meteo API.
-Responsibilities:
-- Resolve city names to coordinates
-- Fetch current weather and 24-hour/monthly temperature forecasts
-- Filter forecast data strictly up to the current hour
+## How to Run the Project
 
-**3️⃣ Controller Layer**
-`WeatherController.java`
-Handles incoming HTTP requests such as:
-- Searching for a city's current weather
-- Adding manual temperature readings
-- Fetching temperature aggregates (Average, Highest, Lowest)
-- Deleting historical temperature inputs
-
-**4️⃣ Model Layer**
-The model classes represent data transferred between the frontend and backend.
-`WeatherResponse.java`: Stores complex weather states, times, and temperature arrays.
-`Temperature.java`: Stores manual temperature records and generated timestamps.
-
-**5️⃣ Static Resources**
-Located in:
-`src/main/resources/static`
-Contains:
-- `script.js` (DOM manipulation and Chart.js initialization)
-- `style.css` (UI styling)
-- `index.html` (Main layout)
-
-⚙️ **Prerequisites**
-Before running the project, make sure to install the following:
-- Java JDK 17
-- Maven 3.8+
-- Active internet connection (for API calls)
-- IDE (IntelliJ / Eclipse / VS Code)
-
-🗄️ **Data Storage**
-Currently, this project uses an ephemeral in-memory `ArrayList` to store manually added temperatures for quick testing and prototyping. 
-*Note: You do not need to install MySQL or setup a database to run this application!*
-
-▶️ **How to Run the Project**
-
-**Step 1**
-Clone the repository or download the project.
+**Step 1:** Clone the repository
 ```bash
 git clone https://github.com/ThirumalaNaidu9381/Weather-Data-Analyzer.git
 ```
 
-**Step 2**
-Navigate to the project directory.
+**Step 2:** Open the project directory
 ```bash
 cd Weather-Data-Analyzer
 ```
 
-**Step 3**
-Run the Spring Boot application using Maven.
+**Step 3:** Run the application
+You can run it directly using Maven in your terminal:
 ```bash
 mvn spring-boot:run
 ```
-OR run the `AnalyzerApplication.java` file directly from your IDE.
+Or you can just run `AnalyzerApplication.java` directly from your IDE.
 
-**Step 4**
-Open the application in your browser:
-http://localhost:8080
+**Step 4:** Open your browser
+Go to `http://localhost:8080` to see the application!
 
-📸 **Application Screenshots**
-*You can insert screenshots of your application here.*
-
-Example:
-- Main Dashboard
-- Weather Search Result
-- Hourly/Daily Temperature Charts
-
-📈 **Future Improvements**
-- Connect to a MySQL database to persist temperature records permanently
-- Build a complete modern frontend (React/Angular)
-- Deploy application to cloud hosting (AWS / Heroku / Render)
-- Add user authentication to support multiple dashboards
+## Future Improvements
+- Add a real database like MySQL to save the manually added temperatures permanently.
+- Add user login functionality so different users can track their own temperatures.
+- Deploy the project live on a cloud platform like AWS or Render.
