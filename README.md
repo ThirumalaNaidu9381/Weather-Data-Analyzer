@@ -37,7 +37,6 @@ weather-data-analyzer/
 I built the backend with Spring Boot 3.x using Java 17.
 - **Spring Web**: To create the REST API endpoints that the frontend talks to.
 - **RestTemplate**: Used inside the service layer to pull real-time JSON data from the external Open-Meteo API.
-- **In-Memory Storage**: I used an internal ArrayList to store any manual temperature readings so you don't need a clunky database just to run the app.
 
 ## Key Components
 **WeatherController**: 
@@ -90,11 +89,6 @@ mvn spring-boot:run
 **Access the Application:**
 Open your browser and navigate to `http://localhost:8080`.
 The UI will pop up, and you can immediately start searching for cities!
-
-## Database
-I intentionally kept this simple by using a Java `ArrayList` to store data in memory while the server runs.
-- **No external DB required**: You don't need to install MySQL, SQLite, or Postgres to test this out!
-- Keep in mind that when you stop the Spring Boot server, your manual temperature records will reset.
 
 ## Development
 - **Backend**: Java 17, Spring Boot 3.x
